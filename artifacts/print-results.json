@@ -1,0 +1,13 @@
+{
+  "result": "passed",
+  "scope": "Base layout only; not M3 attendance/TTD",
+  "page_size": "A4 portrait",
+  "mediabox_points": [
+    0.0,
+    0.0,
+    594.95996,
+    841.91998
+  ],
+  "width_mm": 209.9,
+  "height_mm": 297.0
+}

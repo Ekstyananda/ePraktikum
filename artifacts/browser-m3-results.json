@@ -1,0 +1,21 @@
+{
+  "result": "passed",
+  "target": "Final Docker Nginx/PHP-FPM and isolated portal_test MySQL",
+  "offering_id": 2,
+  "attendance_url": "http://127.0.0.1:18781/praktikum/2/presensi/2",
+  "scan_url": "http://127.0.0.1:18781/praktikum/2/presensi/2/scan/1",
+  "checks": [
+    "5 explicit editable meetings without invented syllabus",
+    "WIB session schedule and explicit 67-participant snapshot",
+    "all initial attendance unrecorded",
+    "bulk present changes only two selected rows",
+    "saved correction requires reason and persists",
+    "simultaneous independent admin/aslab corrections yield 302 and 409",
+    "private scan upload and guest rejection",
+    "SQL material stored as draft, publish public download, unpublish blocks download",
+    "desktop/mobile, sidebar, sticky identity and no body overflow",
+    "single participant mobile form saves through same scoped versioned backend",
+    "A4 PDF 67 rows, five columns, name wider than signature, alternating row numbers",
+    "no JavaScript exceptions"
+  ]
+}

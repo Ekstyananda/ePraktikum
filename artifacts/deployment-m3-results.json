@@ -1,0 +1,26 @@
+{
+  "result": "passed",
+  "verified_at": "2026-10-03T11:55:24.019045+00:00",
+  "environment": "isolated portal-praktikum-smoke app/nginx/scheduler with portal_test MySQL",
+  "production_access": false,
+  "images": {
+    "app": "sha256:27ef18a2b5ffabed069af56bf90ac8893498f67953dbd81d5fb936b2eeeead64",
+    "nginx": "sha256:382c92c9282f5883d13d860979a961ea21f7f4b3daa71a009323ad6fa611b226"
+  },
+  "tests": 71,
+  "assertions": 442,
+  "checks": [
+    "final Docker images built with pinned runtime and Composer lock",
+    "all 7 migrations Ran in isolated DB",
+    "app/nginx healthy; scheduler running with hourly prune",
+    "nginx -t passes and health/ready returns ready",
+    "PHP-FPM UID/GID 33",
+    "PHP upload 11M/post 12M/input vars 10000",
+    "main and smoke Compose validation passes; main deployment has no MySQL service",
+    "scan and module checksums and sizes unchanged after force recreate app/nginx",
+    "final browser end-to-end, concurrent 302/409 and full mobile edit pass",
+    "67-participant PDF 5 A4 pages with repeat headers and alternating TTD verified"
+  ],
+  "private_file_count": 2,
+  "restore_note": "File persistence/checksum verification only; full M3 database restore not claimed"
+}

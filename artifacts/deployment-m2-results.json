@@ -1,0 +1,20 @@
+{
+  "result": "passed",
+  "verified_at": "2026-10-03T11:11:48.516043+00:00",
+  "environment": "portal-praktikum-smoke + isolated portal_test MySQL only",
+  "production_access": false,
+  "checks": [
+    "Final M2 app/nginx images built with Composer lock and OpenSpout 5.12.0",
+    "app/nginx healthy and scheduler running after recreation",
+    "nginx -t passes",
+    "all 6 migrations Ran in isolated DB",
+    "GET /health/ready returns ready",
+    "PHP-FPM UID/GID 33",
+    "PHP upload_max_filesize 6M, post_max_size 8M, max_input_vars 10000",
+    "hourly portal:prune-previews registered and manual command passes",
+    "main and smoke Compose config validation passes",
+    "main Compose contains no MySQL service",
+    "final Playwright browser-m2-results.json passed including parallel capacity and mobile sticky headers"
+  ],
+  "restore_note": "M1 restore evidence retained separately; no M2-schema restore test claimed"
+}

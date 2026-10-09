@@ -1,0 +1,32 @@
+{
+  "result": "passed",
+  "environment": "Isolated portal_test; no production access",
+  "containers": [
+    {
+      "service": "app",
+      "running": true,
+      "health": "healthy",
+      "image_id": "sha256:bff3fc0f24113593d8a11e855a779a3386e4957f9c6703fc648c6c52d1148a99"
+    },
+    {
+      "service": "nginx",
+      "running": true,
+      "health": "healthy",
+      "image_id": "sha256:382c92c9282f5883d13d860979a961ea21f7f4b3daa71a009323ad6fa611b226"
+    },
+    {
+      "service": "scheduler",
+      "running": true,
+      "health": null,
+      "image_id": "sha256:bff3fc0f24113593d8a11e855a779a3386e4957f9c6703fc648c6c52d1148a99"
+    }
+  ],
+  "runtime_uid": 33,
+  "migrations_ran": 8,
+  "nginx_config_test": "passed",
+  "http_up": 200,
+  "private_files_retained_after_app_recreate": 2,
+  "checksums_unchanged": true,
+  "main_compose_has_mysql_service": false,
+  "verification": "Build, Composer validate, Pint, Bootstrap checksum, Blade PHP syntax, Compose config and browser passed. No full schema restore or GitHub CI execution claimed."
+}

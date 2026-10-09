@@ -1,0 +1,35 @@
+// Run with Playwright 1.58.2 in an isolated preview. See docs/08_OPERATIONS.md.
+const {chromium}=require('playwright');
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+(async()=>{
+ const browser=await chromium.launch({headless:true,args:['--no-sandbox']});
+ const context=await browser.newContext({viewport:{width:1440,height:1000}});
+ const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));page.on('dialog',d=>d.accept());
+ const base=process.env.PORTAL_BASE_URL||'http://127.0.0.1:18780';
+ const password=process.env.PORTAL_DEMO_PASSWORD;
+ const browserEmail='browser-'+Date.now()+'@example.test';
+ const screenshot=async name=>page.screenshot({path:'/artifacts/'+name+'.png',fullPage:true,animations:'disabled'});
+ await page.goto(base);assert.equal(await page.locator('h1').innerText(),'Pilih praktikum Anda');await screenshot('public-desktop');
+ await page.goto(base+'/login');await screenshot('login-desktop');
+ let response=await context.request.post(base+'/login',{form:{email:'admin@example.test',password}});assert.equal(response.status(),419);
+ await page.getByLabel('Email',{exact:true}).fill('admin@example.test');await page.getByLabel('Kata sandi',{exact:true}).fill(password);await page.getByRole('button',{name:'Masuk',exact:true}).click();await page.waitForURL('**/dashboard');await screenshot('dashboard-desktop');
+ await page.getByRole('link',{name:'Pengaturan Aslab'}).click();await screenshot('aslab-list-desktop');
+ await page.getByRole('link',{name:'Tambah Aslab',exact:true}).click();await page.getByLabel('Nama',{exact:true}).fill('Aslab Browser — Data contoh');await page.getByLabel('Email',{exact:true}).fill(browserEmail);await page.getByLabel('Kata sandi awal',{exact:true}).fill(password);await page.getByLabel('Konfirmasi kata sandi',{exact:true}).fill(password);await page.getByRole('button',{name:'Buat akun',exact:true}).click();await page.waitForURL(/pengaturan\/aslab\/\d+$/);await screenshot('aslab-profile-desktop');
+ await page.getByRole('tab',{name:'Praktikum',exact:true}).click();await page.locator('.offering-enabled').check();
+ await page.getByRole('tab',{name:'Sesi',exact:true}).click();assert.equal(await page.locator('.all-sessions').isChecked(),true);await page.locator('.all-sessions').uncheck();await page.locator('.session-check').first().check();await screenshot('aslab-scope-desktop');
+ await page.getByRole('tab',{name:'Hak Akses',exact:true}).click();assert.equal(await page.locator('[value="grading_rules.manage"]').isChecked(),false);assert.equal(await page.locator('[value="backup.run"]').isChecked(),false);await page.locator('[value="sessions.manage"]').uncheck();await screenshot('aslab-permissions-desktop');
+ await page.getByLabel('Alasan perubahan').fill('Pengujian browser: batasi lingkup dan hak akses');await page.getByRole('button',{name:'Simpan perubahan'}).click();await page.getByRole('status').waitFor();assert.match(await page.getByRole('status').innerText(),/berhasil disimpan/);
+ await page.getByRole('tab',{name:'Sesi',exact:true}).click();assert.equal(await page.locator('.all-sessions').isChecked(),false);assert.equal(await page.locator('.session-check').first().isChecked(),true);assert.equal(await page.locator('.session-check').nth(1).isChecked(),false);
+ await page.getByRole('tab',{name:'Hak Akses',exact:true}).click();assert.equal(await page.locator('[value="sessions.manage"]').isChecked(),false);
+ await page.pdf({path:'/artifacts/aslab-a4.pdf',format:'A4',printBackground:false,preferCSSPageSize:true});
+ await page.setViewportSize({width:390,height:844});await page.waitForTimeout(300);await screenshot('aslab-detail-mobile');assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
+ await page.locator('#nav-toggle').click();assert.equal(await page.locator('#nav-toggle').getAttribute('aria-expanded'),'true');await page.locator('#nav-close').click();
+ await page.getByRole('button',{name:'Keluar',exact:true}).click();await page.waitForURL('**/login');await screenshot('login-mobile');
+ await page.getByLabel('Email',{exact:true}).fill(browserEmail);await page.getByLabel('Kata sandi',{exact:true}).fill(password);await page.getByRole('button',{name:'Masuk',exact:true}).click();await page.waitForURL('**/dashboard');
+ response=await context.request.get(base+'/pengaturan/aslab');assert.equal(response.status(),403);
+ await page.getByRole('link',{name:'Lihat sesi'}).click();assert.match(await page.locator('main').innerText(),/Sesi 1 — Data contoh/);assert.doesNotMatch(await page.locator('main').innerText(),/Sesi 2 — Data contoh/);
+ await screenshot('aslab-offering-mobile');
+ await page.goto(base);await screenshot('public-mobile');assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
+ assert.deepEqual(errors,[]);fs.writeFileSync('/artifacts/browser-results.json',JSON.stringify({result:'passed',checks:['real CSRF rejection','admin/aslab login and logout','create account through browser','scope and permission persistence','default all sessions','sensitive grants default disabled','aslab direct account route 403','restricted session hidden','mobile sidebar and no body overflow','no JS exceptions','A4 base layout PDF']},null,2));await browser.close();
+})().catch(error=>{console.error(error);process.exit(1)});

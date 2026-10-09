@@ -1,0 +1,26 @@
+.git
+.env
+.env.*
+!.env.example
+vendor
+node_modules
+storage/logs/*
+storage/framework/cache/data/*
+storage/framework/sessions/*
+storage/framework/views/*
+storage/framework/testing
+bootstrap/cache/*.php
+artifacts
+# Local uploads and QA material never belong in the runtime image (the storage volume is seeded from it).
+storage/app/private/*
+!storage/app/private/.gitignore
+storage/app/public/*
+!storage/app/public/.gitignore
+tests
+scripts
+design
+.github
+.phpunit.result.cache
+compose.test.yaml
+compose.smoke.yaml
+backups

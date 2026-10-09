@@ -1,0 +1,45 @@
+name: Portal Praktikum checks
+on: [push, pull_request]
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    services:
+      mysql:
+        image: mysql:8.0@sha256:7dcddc01f13bab2f15cde676d44d01f61fc9f99fe7785e86196dfc07d358ae2b
+        env:
+          MYSQL_DATABASE: portal_test
+          MYSQL_USER: portal_test
+          MYSQL_PASSWORD: isolated-ci-only
+          MYSQL_ROOT_PASSWORD: isolated-ci-root-only
+        ports: ['3306:3306']
+        options: --health-cmd="mysqladmin ping --silent" --health-interval=5s --health-retries=30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: pdo_mysql, mbstring, intl, zip, dom, xmlreader, gd
+          coverage: none
+      - run: composer install --prefer-dist --no-interaction
+      - run: |
+          cp .env.testing.example .env.testing
+          php artisan key:generate --env=testing
+      - run: composer validate --strict
+      - run: vendor/bin/pint --test
+      - run: sha256sum -c public/vendor/bootstrap/SHA256SUMS
+      - run: sha256sum -c public/vendor/bootstrap-icons/SHA256SUMS
+      - run: sha256sum -c public/vendor/inter/SHA256SUMS
+      - run: sha256sum -c public/vendor/qrcode-generator/SHA256SUMS
+      - run: vendor/bin/phpunit
+        env:
+          DB_HOST: 127.0.0.1
+          DB_PORT: 3306
+          DB_DATABASE: portal_test
+          DB_USERNAME: portal_test
+          DB_PASSWORD: isolated-ci-only
+          MYSQL_TEST_ROOT_PASSWORD: isolated-ci-root-only
+      - run: |
+          php artisan view:cache
+          for view in storage/framework/views/*.php; do php -l "$view" || exit 1; done
+      - run: docker compose --env-file .env.example config --quiet
+      - run: docker compose --env-file .env.example build app nginx

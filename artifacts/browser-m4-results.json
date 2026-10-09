@@ -1,0 +1,21 @@
+{
+  "result": "passed",
+  "target": "Final Docker Nginx/PHP-FPM and isolated portal_test",
+  "offering_id": 3,
+  "enrollment_id": 68,
+  "checks": [
+    "UI creates print activity, direct lab, final report and digital task",
+    "origin meeting 1 and collection meeting 2",
+    "printed receipt without attachment and independent recorded time",
+    "16 checklist items only on selected report",
+    "private digital version 1 retained after revision 2, guest rejected",
+    "finalization blocked before rules",
+    "direct lab grade without submission",
+    "default aslab cannot edit rules",
+    "concurrent grade updates yield 302 and 409",
+    "explicit test-only draft rule published",
+    "finalization computes 86/A and locks grades",
+    "collections per meeting with Cetak/Digital tabs and final report checklist overview",
+    "desktop/mobile no body overflow and no JS errors"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "result": "passed",
+  "checks": [
+    "Docker app/Nginx image builds",
+    "nginx config validation",
+    "app and nginx healthchecks",
+    "scheduler and optional worker running",
+    "readiness SELECT 1 on isolated MySQL",
+    "PHP UID 33",
+    "private storage persisted across recreate",
+    "isolated DB dump checksum and restore",
+    "isolated storage archive checksum and restore",
+    "compiled Blade view cache cleared on FPM image update"
+  ],
+  "restore_comparison": {
+    "tables": 17,
+    "users": 3,
+    "audit_rows": 2
+  },
+  "network": "portal-praktikum-isolated-test",
+  "production_access": false
+}

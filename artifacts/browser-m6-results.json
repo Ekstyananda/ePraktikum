@@ -1,0 +1,13 @@
+{
+  "result": "passed",
+  "offering_id": 2,
+  "checks": [
+    "announcement draft hidden (404), published visible on home and detail, script/javascript links stripped",
+    "report page, CSV and XLSX downloads, A4 landscape print PDF",
+    "activity log filter and read-only diff detail without forms",
+    "backup queued from UI and completed by the scheduler container with table/row counts",
+    "semester lock hides public services and returns 423 for staff writes; reopen with reason restores and is logged",
+    "mobile 390px without page overflow",
+    "no JS or console errors"
+  ]
+}

@@ -1,0 +1,18 @@
+# Only for the isolated MySQL created by compose.test.yaml.
+services:
+  app:
+    env_file: .env.testing
+    environment: &smoke-env
+      APP_ENV: production
+      APP_DEBUG: 'false'
+      APP_URL: http://localhost:18781
+      DB_HOST: mysql-test
+      DB_PORT: '3306'
+      SESSION_DRIVER: database
+      CACHE_STORE: database
+  scheduler:
+    env_file: .env.testing
+    environment: *smoke-env
+  worker:
+    env_file: .env.testing
+    environment: *smoke-env

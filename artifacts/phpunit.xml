@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="/DATA/AppData/Project/phpunit.xml" tests="23" assertions="128" errors="0" failures="0" skipped="0" time="2.364658">
+    <testsuite name="Feature" tests="23" assertions="128" errors="0" failures="0" skipped="0" time="2.364658">
+      <testsuite name="Tests\Feature\AccessTest" file="/DATA/AppData/Project/tests/Feature/AccessTest.php" tests="23" assertions="128" errors="0" failures="0" skipped="0" time="2.364658">
+        <testcase name="test_public_has_no_student_login_or_roster" file="/DATA/AppData/Project/tests/Feature/AccessTest.php" line="45" class="Tests\Feature\AccessTest" classname="Tests.Feature.AccessTest" assertions="6" time="0.407738"/>
+        <testcase name="test_admin_and_aslab_can_login_and_logout" file="/DATA/AppData/Project/tests/Feature/AccessTest.php" line="52" class="Tests\Feature\AccessTest" classname="Tests.Feature.AccessTest" assertions="18" time="0.047475"/>
+        <testcase name="test_inactive_login_and_wrong_password_share_generic_error" file="/DATA/AppData/Project/tests/Feature/AccessTest.php" line="64" class="Tests\Feature\AccessTest" classname="Tests.Feature.AccessTest" assertions="5" time="0.415364"/>
+        <testcase name="test_login_is_rate_limited" file="/DATA/AppData/Project/tests/Feature/AccessTest.php" line="72" class="Tests\Feature\AccessTest" classname="Tests.Feature.AccessTest" assertions="12" time="1.020545"/>
+        <testcase name="test_inactive_authenticated_account_is_rejected" file="/DATA/AppData/Project/tests/Feature/AccessTest.php" line="80" class="Tests\Feature\AccessTest" classname="Tests.Feature.AccessTest" assertions="2" time="0.013084"/>
+        <testcase name="test_all_account_management_routes_are_admin_only" file="/DATA/AppData/Project/tests/Feature/AccessTest.php" line="89" class="Tests\Feature\AccessTest" classname="Tests.Feature.AccessTest" assertions="6" time="0.022169"/>
+        <testcase name="test_admin_creates_and_edits_aslab_via_clickable_name" file="/DATA/AppData/Project/tests/Feature/AccessTest.php" line="102" class="Tests\Feature\AccessTest" classname="Tests.Feature.AccessTest" assertions="7" time="0.034834"/>
+        <testcase name="test_standard_grants_all_current_and_future_sessions_in_assigned_offering" file="/DATA/AppData/Project/tests/Feature/AccessTest.php" line="114" class="Tests\Feature\AccessTest" classname="Tests.Feature.AccessTest" assertions="9" time="0.042740"/>
+        <testcase name="test_optional_session_scope_is_enforced_in_direct_requests" file="/DATA/AppData/Project/tests/Feature/AccessTest.php" line="135" class="Tests\Feature\AccessTest" classname="Tests.Feature.AccessTest" assertions="6" time="0.058830"/>
+        <testcase name="test_explicit_deny_and_grant_apply_immediately" file="/DATA/AppData/Project/tests/Feature/AccessTest.php" line="149" class="Tests\Feature\AccessTest" classname="Tests.Feature.AccessTest" assertions="5" time="0.024980"/>
+        <testcase name="test_admin_saves_scopes_permissions_and_atomic_audit" file="/DATA/AppData/Project/tests/Feature/AccessTest.php" line="165" class="Tests\Feature\AccessTest" classname="Tests.Feature.AccessTest" assertions="8" time="0.038653"/>
+        <testcase name="test_cross_offering_scope_and_unknown_permission_reject_entire_update" file="/DATA/AppData/Project/tests/Feature/AccessTest.php" line="184" class="Tests\Feature\AccessTest" classname="Tests.Feature.AccessTest" assertions="6" time="0.026650"/>
+        <testcase name="test_stale_edit_is_a_visible_conflict_and_never_overwrites" file="/DATA/AppData/Project/tests/Feature/AccessTest.php" line="203" class="Tests\Feature\AccessTest" classname="Tests.Feature.AccessTest" assertions="4" time="0.025650"/>
+        <testcase name="test_password_reset_and_deactivation_revoke_database_sessions" file="/DATA/AppData/Project/tests/Feature/AccessTest.php" line="215" class="Tests\Feature\AccessTest" classname="Tests.Feature.AccessTest" assertions="6" time="0.030538"/>
+        <testcase name="test_removing_assignment_revokes_access_and_cascades_only_grants" file="/DATA/AppData/Project/tests/Feature/AccessTest.php" line="234" class="Tests\Feature\AccessTest" classname="Tests.Feature.AccessTest" assertions="4" time="0.025627"/>
+        <testcase name="test_admin_cannot_mutate_another_admin_through_aslab_routes" file="/DATA/AppData/Project/tests/Feature/AccessTest.php" line="248" class="Tests\Feature\AccessTest" classname="Tests.Feature.AccessTest" assertions="2" time="0.017000"/>
+        <testcase name="test_invalid_password_and_missing_reason_are_rejected" file="/DATA/AppData/Project/tests/Feature/AccessTest.php" line="256" class="Tests\Feature\AccessTest" classname="Tests.Feature.AccessTest" assertions="4" time="0.017074"/>
+        <testcase name="test_database_foreign_key_rejects_cross_offering_scope" file="/DATA/AppData/Project/tests/Feature/AccessTest.php" line="268" class="Tests\Feature\AccessTest" classname="Tests.Feature.AccessTest" assertions="1" time="0.013338"/>
+        <testcase name="test_empty_restricted_scope_denies_all_sessions" file="/DATA/AppData/Project/tests/Feature/AccessTest.php" line="279" class="Tests\Feature\AccessTest" classname="Tests.Feature.AccessTest" assertions="1" time="0.016986"/>
+        <testcase name="test_bootstrap_admin_has_no_default_password_and_refuses_second_admin" file="/DATA/AppData/Project/tests/Feature/AccessTest.php" line="288" class="Tests\Feature\AccessTest" classname="Tests.Feature.AccessTest" assertions="7" time="0.013844"/>
+        <testcase name="test_public_layout_stays_public_when_manager_logged_in" file="/DATA/AppData/Project/tests/Feature/AccessTest.php" line="295" class="Tests\Feature\AccessTest" classname="Tests.Feature.AccessTest" assertions="3" time="0.015931"/>
+        <testcase name="test_readiness_checks_real_mysql_without_exposing_config" file="/DATA/AppData/Project/tests/Feature/AccessTest.php" line="300" class="Tests\Feature\AccessTest" classname="Tests.Feature.AccessTest" assertions="2" time="0.009693"/>
+        <testcase name="test_client_cannot_promote_aslab_or_override_assignment_owner" file="/DATA/AppData/Project/tests/Feature/AccessTest.php" line="305" class="Tests\Feature\AccessTest" classname="Tests.Feature.AccessTest" assertions="4" time="0.025915"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>

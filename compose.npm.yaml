@@ -1,0 +1,13 @@
+# Nginx Proxy Manager on the same VPS. Enable with COMPOSE_FILE=compose.yaml:compose.npm.yaml in .env.
+# NPM reaches Nginx over NPM's own Docker network (Forward Hostname: portal-praktikum, port 80).
+# TRUSTED_PROXIES must be NPM's exact container IP on that network, not the subnet: the subnet's
+# gateway would let anyone forge X-Forwarded-For and dodge the per-IP limits.
+services:
+  nginx:
+    networks:
+      npm:
+        aliases: [portal-praktikum]
+networks:
+  npm:
+    external: true
+    name: ${NPM_NETWORK:?Set NPM_NETWORK to the Docker network Nginx Proxy Manager runs on}

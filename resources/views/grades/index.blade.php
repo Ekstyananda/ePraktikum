@@ -1,0 +1,9 @@
+@extends('layouts.app')
+@section('context',$o->semester.' · '.$o->name)
+@section('content')
+<x-page-header title="Penilaian & Rekap" subtitle="Kosong berarti belum diperiksa, bukan nol. Komponen mengikuti konfigurasi praktikum." :crumbs="['Dashboard' => route('dashboard'), 'Penilaian' => null]">
+    <x-slot:actions>@if($canRules)<a href="{{ route('grades.components',$o->id) }}" class="btn btn-outline-primary"><i class="bi bi-ui-checks-grid" aria-hidden="true"></i> Komponen nilai</a><a href="{{ route('grades.rules',$o->id) }}" class="btn btn-outline-primary"><i class="bi bi-sliders" aria-hidden="true"></i> Aturan nilai</a>@endif</x-slot:actions>
+</x-page-header>
+<form method="get" class="toolbar"><input class="form-control" name="q" value="{{ request('q') }}" placeholder="Cari NBI/nama" aria-label="Cari NBI/nama"><x-per-page /><button class="btn btn-outline-primary">Cari</button></form>
+<div class="card"><div class="card-body table-responsive"><table class="table roster-table"><thead><tr><th class="sticky-nbi">NBI</th><th class="sticky-student">Nama</th>@foreach($components as $c)<th>{{ $c->label }}</th>@endforeach<th>Finalisasi</th></tr></thead><tbody>@forelse($rows as $e)<tr><td class="sticky-nbi">{{ $e->nbi }}</td><td class="sticky-student"><a href="{{ route('grades.form',[$o->id,$e->id]) }}">{{ $e->name }}</a></td>@foreach($components as $c)@php $g=$grades->get($e->id,collect())->firstWhere('component_id',$c->id); @endphp<td>{{ $g?->score??'— Belum diperiksa' }}@if($g?->status==='missing_zero')<small class="d-block">Nol diputuskan</small>@endif</td>@endforeach<td><a href="{{ route('grades.final',[$o->id,$e->id]) }}">{{ $finals->has($e->id)?'Lihat arsip final':'Periksa kelengkapan' }}</a></td></tr>@empty<tr><td colspan="{{ count($components)+3 }}" class="empty">Belum ada praktikan sesuai scope/filter.</td></tr>@endforelse</tbody></table>{{ $rows->links() }}</div></div>
+@endsection

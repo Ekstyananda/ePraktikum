@@ -1,0 +1,68 @@
+name: portal-praktikum
+x-runtime: &runtime
+  image: portal-praktikum-app:latest
+  build:
+    context: .
+    target: runtime
+  env_file: .env
+  restart: unless-stopped
+  volumes:
+    - portal-storage:/var/www/html/storage
+    # Backup destination on the host, separate from the storage volume. Must be writable by UID 33.
+    - ${BACKUP_HOST_PATH:-./backups}:${BACKUP_DESTINATION:-/backups}
+  networks:
+    - internal
+    - mysql-external
+services:
+  app:
+    <<: *runtime
+    healthcheck:
+      test: ["CMD", "php", "-r", "$$s=@fsockopen('127.0.0.1',9000); exit($$s?0:1);"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+  nginx:
+    image: portal-praktikum-web:latest
+    build:
+      context: .
+      target: web
+    restart: unless-stopped
+    ports:
+      # Default loopback only: cloudflared on the host reaches it; the internet and other hosts cannot bypass the tunnel.
+      - "${APP_BIND:-127.0.0.1}:${APP_PORT:-8095}:80"
+    networks: [internal, web]
+    depends_on:
+      app:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1/up"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+  scheduler:
+    <<: *runtime
+    command: ["php", "artisan", "schedule:work"]
+    depends_on:
+      app:
+        condition: service_healthy
+  worker:
+    <<: *runtime
+    profiles: [jobs]
+    command: ["php", "artisan", "queue:work", "--sleep=3", "--tries=3", "--timeout=120", "--max-time=3600"]
+    depends_on:
+      app:
+        condition: service_healthy
+networks:
+  web:
+    # Fixed subnet so the gateway seen by Nginx (the trusted proxy for a host-side cloudflared) stays the same after down/up.
+    ipam:
+      config:
+        - subnet: ${WEB_SUBNET:-10.231.0.0/24}
+          gateway: ${WEB_GATEWAY:-10.231.0.1}
+  internal:
+    internal: true
+  mysql-external:
+    external: true
+    name: ${MYSQL_EXTERNAL_NETWORK:-lab-external}
+volumes:
+  portal-storage:

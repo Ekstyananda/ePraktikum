@@ -1,0 +1,19 @@
+{
+  "result": "passed",
+  "target": "Final Docker Nginx/PHP-FPM isolated MySQL",
+  "checks": [
+    "admin creates semester/practicum/offering and session",
+    "aslab offering assigned through real form",
+    "3 practitioners without supervisor",
+    "supervisor master created",
+    "bulk preview of exactly 3 targets and persistence",
+    "CSV upload mapping preview and commit",
+    "XLSX export download",
+    "aslab authorized roster and direct master route 403",
+    "desktop/mobile screenshots",
+    "mobile sidebar and no body overflow",
+    "two concurrent independent admin/aslab requests cannot overfill capacity 1",
+    "no JavaScript exceptions"
+  ],
+  "offering_id": 4
+}

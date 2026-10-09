@@ -1,0 +1,5 @@
+@extends('layouts.app')
+@section('content')
+<x-page-header title="Modul & Soal" subtitle="Materi yang telah diterbitkan pengelola. Praktikan dapat mengunduh tanpa akun." :crumbs="[$portal['name'] => route('portal.home', $portal['current_slug']), 'Modul' => null]" /><form method="get" class="toolbar"><label class="visually-hidden" for="q">Cari materi</label><input id="q" name="q" class="form-control" placeholder="Cari materi atau pertemuan" value="{{ request('q') }}"><button class="btn btn-outline-primary">Cari</button></form>
+<div class="row g-3">@forelse($materials as $m)<div class="col-md-6"><article class="card h-100"><div class="card-body"><div class="small text-secondary">{{ $m->semester }}</div><h2 class="mt-2">{{ $m->title }}</h2><p>Pertemuan {{ $m->number }} · {{ $m->meeting_title }}</p><a class="btn btn-primary" href="{{ route('portal.material.download', [$portal['current_slug'], $m->id]) }}">Unduh materi</a></div></article></div>@empty<div class="col-12"><div class="card"><div class="card-body empty">Belum ada materi yang diterbitkan sesuai pencarian.</div></div></div>@endforelse</div><div class="mt-3">{{ $materials->links() }}</div>
+@endsection

@@ -1,0 +1,16 @@
+{
+  "result": "passed",
+  "checks": [
+    "real CSRF rejection",
+    "admin/aslab login and logout",
+    "create account through browser",
+    "scope and permission persistence",
+    "default all sessions",
+    "sensitive grants default disabled",
+    "aslab direct account route 403",
+    "restricted session hidden",
+    "mobile sidebar and no body overflow",
+    "no JS exceptions",
+    "A4 base layout PDF"
+  ]
+}

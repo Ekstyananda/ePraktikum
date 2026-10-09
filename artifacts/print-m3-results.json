@@ -1,0 +1,354 @@
+{
+  "result": "passed",
+  "pdf": "m3-attendance-a4.pdf",
+  "pages": 5,
+  "page_size_points": [
+    594.96,
+    841.92
+  ],
+  "participants": 67,
+  "checks": [
+    "A4 portrait on every page",
+    "table header repeats on every page",
+    "67 unique NBI/name/signature pairs on same page and row",
+    "single TTD number per participant",
+    "odd/even alternation uses print_order across page boundaries"
+  ],
+  "placements": {
+    "1": {
+      "page": 1,
+      "signature_x": 435.57,
+      "row_y": 192.7
+    },
+    "2": {
+      "page": 1,
+      "signature_x": 498.07,
+      "row_y": 238.45
+    },
+    "3": {
+      "page": 1,
+      "signature_x": 435.57,
+      "row_y": 284.95
+    },
+    "4": {
+      "page": 1,
+      "signature_x": 498.07,
+      "row_y": 330.7
+    },
+    "5": {
+      "page": 1,
+      "signature_x": 435.57,
+      "row_y": 376.45
+    },
+    "6": {
+      "page": 1,
+      "signature_x": 498.07,
+      "row_y": 422.2
+    },
+    "7": {
+      "page": 1,
+      "signature_x": 435.57,
+      "row_y": 467.95
+    },
+    "8": {
+      "page": 1,
+      "signature_x": 498.07,
+      "row_y": 513.7
+    },
+    "9": {
+      "page": 1,
+      "signature_x": 435.57,
+      "row_y": 559.45
+    },
+    "10": {
+      "page": 1,
+      "signature_x": 498.07,
+      "row_y": 605.2
+    },
+    "11": {
+      "page": 1,
+      "signature_x": 435.57,
+      "row_y": 650.95
+    },
+    "12": {
+      "page": 1,
+      "signature_x": 498.07,
+      "row_y": 696.7
+    },
+    "13": {
+      "page": 1,
+      "signature_x": 435.57,
+      "row_y": 743.2
+    },
+    "14": {
+      "page": 2,
+      "signature_x": 498.07,
+      "row_y": 79.45
+    },
+    "15": {
+      "page": 2,
+      "signature_x": 435.57,
+      "row_y": 125.2
+    },
+    "16": {
+      "page": 2,
+      "signature_x": 498.07,
+      "row_y": 171.7
+    },
+    "17": {
+      "page": 2,
+      "signature_x": 435.57,
+      "row_y": 217.45
+    },
+    "18": {
+      "page": 2,
+      "signature_x": 498.07,
+      "row_y": 263.2
+    },
+    "19": {
+      "page": 2,
+      "signature_x": 435.57,
+      "row_y": 308.95
+    },
+    "20": {
+      "page": 2,
+      "signature_x": 498.07,
+      "row_y": 354.7
+    },
+    "21": {
+      "page": 2,
+      "signature_x": 435.57,
+      "row_y": 400.45
+    },
+    "22": {
+      "page": 2,
+      "signature_x": 498.07,
+      "row_y": 446.2
+    },
+    "23": {
+      "page": 2,
+      "signature_x": 435.57,
+      "row_y": 491.95
+    },
+    "24": {
+      "page": 2,
+      "signature_x": 498.07,
+      "row_y": 537.7
+    },
+    "25": {
+      "page": 2,
+      "signature_x": 435.57,
+      "row_y": 583.45
+    },
+    "26": {
+      "page": 2,
+      "signature_x": 498.07,
+      "row_y": 629.2
+    },
+    "27": {
+      "page": 2,
+      "signature_x": 435.57,
+      "row_y": 675.7
+    },
+    "28": {
+      "page": 2,
+      "signature_x": 498.07,
+      "row_y": 721.45
+    },
+    "29": {
+      "page": 2,
+      "signature_x": 435.57,
+      "row_y": 767.2
+    },
+    "30": {
+      "page": 3,
+      "signature_x": 498.07,
+      "row_y": 79.45
+    },
+    "31": {
+      "page": 3,
+      "signature_x": 435.57,
+      "row_y": 125.2
+    },
+    "32": {
+      "page": 3,
+      "signature_x": 498.07,
+      "row_y": 171.7
+    },
+    "33": {
+      "page": 3,
+      "signature_x": 435.57,
+      "row_y": 217.45
+    },
+    "34": {
+      "page": 3,
+      "signature_x": 498.07,
+      "row_y": 263.2
+    },
+    "35": {
+      "page": 3,
+      "signature_x": 435.57,
+      "row_y": 308.95
+    },
+    "36": {
+      "page": 3,
+      "signature_x": 498.07,
+      "row_y": 354.7
+    },
+    "37": {
+      "page": 3,
+      "signature_x": 435.57,
+      "row_y": 400.45
+    },
+    "38": {
+      "page": 3,
+      "signature_x": 498.07,
+      "row_y": 446.2
+    },
+    "39": {
+      "page": 3,
+      "signature_x": 435.57,
+      "row_y": 491.95
+    },
+    "40": {
+      "page": 3,
+      "signature_x": 498.07,
+      "row_y": 537.7
+    },
+    "41": {
+      "page": 3,
+      "signature_x": 435.57,
+      "row_y": 583.45
+    },
+    "42": {
+      "page": 3,
+      "signature_x": 498.07,
+      "row_y": 629.2
+    },
+    "43": {
+      "page": 3,
+      "signature_x": 435.57,
+      "row_y": 675.7
+    },
+    "44": {
+      "page": 3,
+      "signature_x": 498.07,
+      "row_y": 721.45
+    },
+    "45": {
+      "page": 3,
+      "signature_x": 435.57,
+      "row_y": 767.2
+    },
+    "46": {
+      "page": 4,
+      "signature_x": 498.07,
+      "row_y": 79.45
+    },
+    "47": {
+      "page": 4,
+      "signature_x": 435.57,
+      "row_y": 125.2
+    },
+    "48": {
+      "page": 4,
+      "signature_x": 498.07,
+      "row_y": 171.7
+    },
+    "49": {
+      "page": 4,
+      "signature_x": 435.57,
+      "row_y": 217.45
+    },
+    "50": {
+      "page": 4,
+      "signature_x": 498.07,
+      "row_y": 263.2
+    },
+    "51": {
+      "page": 4,
+      "signature_x": 435.57,
+      "row_y": 308.95
+    },
+    "52": {
+      "page": 4,
+      "signature_x": 498.07,
+      "row_y": 354.7
+    },
+    "53": {
+      "page": 4,
+      "signature_x": 435.57,
+      "row_y": 400.45
+    },
+    "54": {
+      "page": 4,
+      "signature_x": 498.07,
+      "row_y": 446.2
+    },
+    "55": {
+      "page": 4,
+      "signature_x": 435.57,
+      "row_y": 491.95
+    },
+    "56": {
+      "page": 4,
+      "signature_x": 498.07,
+      "row_y": 537.7
+    },
+    "57": {
+      "page": 4,
+      "signature_x": 435.57,
+      "row_y": 583.45
+    },
+    "58": {
+      "page": 4,
+      "signature_x": 498.07,
+      "row_y": 629.2
+    },
+    "59": {
+      "page": 4,
+      "signature_x": 435.57,
+      "row_y": 675.7
+    },
+    "60": {
+      "page": 4,
+      "signature_x": 498.07,
+      "row_y": 721.45
+    },
+    "61": {
+      "page": 4,
+      "signature_x": 435.57,
+      "row_y": 767.2
+    },
+    "62": {
+      "page": 5,
+      "signature_x": 498.07,
+      "row_y": 79.45
+    },
+    "63": {
+      "page": 5,
+      "signature_x": 435.57,
+      "row_y": 125.2
+    },
+    "64": {
+      "page": 5,
+      "signature_x": 498.07,
+      "row_y": 171.7
+    },
+    "65": {
+      "page": 5,
+      "signature_x": 435.57,
+      "row_y": 217.45
+    },
+    "66": {
+      "page": 5,
+      "signature_x": 498.07,
+      "row_y": 263.2
+    },
+    "67": {
+      "page": 5,
+      "signature_x": 435.57,
+      "row_y": 308.95
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "result": "passed",
+  "offering_id": 2,
+  "checks": [
+    "public pages without login, sidebar or roster",
+    "generic identity error",
+    "izin, pindah satu pertemuan, pengumpulan digital and remidi through public forms with one-time token",
+    "two staff accounts approve two moves concurrently; capacity allows exactly one",
+    "izin approval does not change attendance",
+    "digital delivery accepted, private download needs login",
+    "remidi result stored separately; original 45 kept, result 78",
+    "status page shows state without grades",
+    "mobile 390px without page overflow, public menu collapse",
+    "no JS or console errors"
+  ]
+}

@@ -1,0 +1,20 @@
+name: portal-praktikum-test
+services:
+  mysql-test:
+    image: mysql:8.0@sha256:7dcddc01f13bab2f15cde676d44d01f61fc9f99fe7785e86196dfc07d358ae2b
+    environment:
+      MYSQL_DATABASE: portal_test
+      MYSQL_USER: portal_test
+      MYSQL_PASSWORD: ${DB_PASSWORD:?Use an isolated test password}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_TEST_ROOT_PASSWORD:?Use an isolated test root password}
+    ports: ["127.0.0.1:${DB_PORT:-13379}:3306"]
+    tmpfs: ["/var/lib/mysql"]
+    networks: [test]
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "--silent"]
+      interval: 3s
+      timeout: 3s
+      retries: 40
+networks:
+  test:
+    name: portal-praktikum-isolated-test

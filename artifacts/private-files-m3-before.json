@@ -1,0 +1,17 @@
+{
+    "result": "passed",
+    "private_files": [
+        {
+            "id": "26a177f3-7d8f-405a-b93b-998ffed7ae0c",
+            "checksum": "6d0bd8b86556e8735967dc306d9488a92f5ccf9c60f2cefd69fd51f80d74b661",
+            "size": 59,
+            "visibility": "private"
+        },
+        {
+            "id": "6909906b-3df2-4415-80c3-79b935cf3d60",
+            "checksum": "904636248025ad20fb9c6bd8b700179a2a42edb5df3636e926c7e09055ee3f75",
+            "size": 51,
+            "visibility": "private"
+        }
+    ]
+}
